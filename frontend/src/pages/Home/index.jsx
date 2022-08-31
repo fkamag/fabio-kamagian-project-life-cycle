@@ -8,6 +8,8 @@ export default function Home() {
 
 			<h3>P. Estudantes</h3>
 			<a href="/student/data/project">Nota por pessoa em um projeto</a>
+			<br></br>
+			<a href="/student/class">Pessoas estudantes por turma</a>
 			<p>Cadastrar P. Estudante</p>
 			<p>Cadastrar Novos Projetos</p>
 			<p>Cadastrar Novos Projetos</p>
@@ -17,7 +19,7 @@ export default function Home() {
 			<br />
 
 			<h3>Projetos</h3>
-			<p>Cadastrar Projetos</p>
+			<a href="/project/new/">Cadastrar Projeto</a>
 			<p>Listar Projetos</p>
 
 		</div>
