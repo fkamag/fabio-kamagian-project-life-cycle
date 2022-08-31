@@ -16,7 +16,7 @@ router.get('/:idStudent/project/:idProject', async (req, res) => {
 	const { idStudent, idProject } = req.params;
 	const [studentGrade] = await studentDb.getStudentGradeByProject({ idStudent, idProject });
 
-	res.status(200).json(studentGrade);
+	res.status(200).json(studentGrade[0]);
 });
 
 // depois do middleware tokenValidation, todas as rotas precisam de autorização
