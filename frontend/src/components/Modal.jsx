@@ -4,8 +4,8 @@ import Modal from 'react-modal';
 const customStyles = {
 	content: {
 		display: 'flex',
-		'justify-content': 'space-between',
-		'align-items': 'center',
+		justifyContent: 'space-between',
+		alignItems: 'center',
 		top: '50%',
 		left: '50%',
 		right: 'auto',
@@ -31,8 +31,13 @@ export default function ModalScreen(props) {
 
 	useEffect(() => {
 		openModal();
-		console.log(props.student.name)
-	}, [])
+
+	}, []);
+
+	function getDate(date) {
+		const firstParse = date.replace('T', ' ');
+		return firstParse.replace('.000Z', '');
+	}
 
 	return (
 		<div>
@@ -42,10 +47,16 @@ export default function ModalScreen(props) {
 				style={customStyles}
 				contentLabel="Example Modal"
 			>
-				<button onClick={closeModal}>X</button>
-				<h2>{props.student.name}</h2>
-				<p>Projeto: {props.student.project}</p>
-				<p>Nota: {(props.student.grade * 100)}%</p>
+				<div>
+					<button onClick={closeModal}>X</button>
+				</div>
+				<div>
+					<h1>{props.student.studentName}</h1>
+					<h3>Projeto: {props.student.projectName}</h3>
+					<h3>Nota: {(props.student.grade * 100)}%</h3>
+					<p>Entrega: {getDate(props.student.deliveryDate)}</p>
+				</div>
+				<div></div>
 			</Modal>
 		</div>
 	);
