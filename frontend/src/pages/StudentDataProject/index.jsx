@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React, { useState } from 'react';
 import './style.css';
 
@@ -12,18 +13,18 @@ export default function StudentDataProject() {
 
 	const [modal, setModal] = useState(false);
 
-	function handleData(e) {
+	async function handleData(e) {
 		e.preventDefault();
 
-		setStudentId('');
-		setProjectId('');
+		const fetch = await axios
+			.get(`http://localhost:3001/student/${studentId}/project/${projectId}`);
 
-		setStudent({
-			name: "Thiago H Mariotto",
-			project: "Talker Manager",
-			grade: 0.87
-		});
+		if (!fetch.data) {
+			alert("Nenhuma entrega registrada!");
+			return;
+		}
 
+		setStudent(fetch.data);
 		setModal(true);
 	}
 
@@ -53,7 +54,7 @@ export default function StudentDataProject() {
 					<button className="button" type="submit">Buscar</button>
 				</form>
 
-				{modal && student ? <ModalScreen student={student} /> : console.log(student)}
+				{modal && student ? <ModalScreen student={student} /> : null}
 
 			</div>
 		</div >
