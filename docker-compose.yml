@@ -10,6 +10,8 @@ services:
       - database
     volumes:
       - ./backend:/app-back
+      - /app-back/node_modules
+
 
   database:
     image: mysql:5.7
@@ -29,5 +31,6 @@ services:
       - 3000:3000
     volumes:
       - ./frontend:/app-front
+      - /app-front/node_modules
     depends_on:
       - api
